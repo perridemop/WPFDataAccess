@@ -31,13 +31,27 @@ namespace WPFDataAccess
             //https://www.youtube.com/watch?v=RJvKaHPc8Dc
             DB_128040_practiceEntities db = new DB_128040_practiceEntities();
 
-            if ()
+            
+            //string output = $"{Customer.FirstName}/{Customer.LastName}/{Customer.ID}";
+
+            if (int.TryParse(txtBoxInput.Text, out int CustomerID) == true)
             {
-                var cust = db.Customers.OrderBy(x => x.FirstName);
+                int custID = Convert.ToInt32(txtBoxInput.Text);
+
+                List<Customer> c = new List<Customer>();
+                foreach(var x in db.Customers)
+                {
+                    if (x.CustomerID == custID)
+                    {
+                        listBoxCustomer.Items.Add(x);
+                    }
+                }
+
             }
-            else if ()
+            else
             {
-                var city = db.Customers.OrderBy(x => x.City);
+                string city = txtBoxInput.Text;
+                //listBoxCustomer.Items.Add(output);
             }
             
 
